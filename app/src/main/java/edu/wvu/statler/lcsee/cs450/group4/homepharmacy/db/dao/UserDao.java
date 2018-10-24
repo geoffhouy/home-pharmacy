@@ -9,7 +9,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities.User;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 
 /**
  * Data Access Object for User.

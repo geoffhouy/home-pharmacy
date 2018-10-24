@@ -1,4 +1,4 @@
-package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities;
+package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

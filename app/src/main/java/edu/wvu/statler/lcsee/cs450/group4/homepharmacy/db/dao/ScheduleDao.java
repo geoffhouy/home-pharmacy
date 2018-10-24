@@ -9,7 +9,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities.Schedule;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
 
 /**
  * Data Access Object for Schedule.

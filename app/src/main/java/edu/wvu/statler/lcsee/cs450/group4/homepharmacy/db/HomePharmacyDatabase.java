@@ -8,9 +8,9 @@ import android.content.Context;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao.MedicationDao;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao.ScheduleDao;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao.UserDao;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities.Medication;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities.Schedule;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entities.User;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Medication;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 
 /**
  * The Room database for Home Pharmacy.
