@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -48,7 +49,7 @@ public interface MedicationDao {
      * @return A List of all Medications in the table.
      */
     @Query("SELECT * FROM " + Medication.TABLE_NAME)
-    List<Medication> selectAll();
+    LiveData<List<Medication>> selectAll();
 
     /**
      * Selects a Medication by UUID.
@@ -57,6 +58,6 @@ public interface MedicationDao {
      * @return The selected Medication.
      */
     @Query("SELECT * FROM " + Medication.TABLE_NAME + " WHERE uuid = :uuid")
-    Medication selectByUUID(long uuid);
+    LiveData<Medication> selectByUUID(long uuid);
 
 }

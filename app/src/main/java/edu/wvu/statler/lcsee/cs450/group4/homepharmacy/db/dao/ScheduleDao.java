@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -48,7 +49,7 @@ public interface ScheduleDao {
      * @return A List of all Schedules in the table.
      */
     @Query("SELECT * FROM " + Schedule.TABLE_NAME)
-    List<Schedule> selectAll();
+    LiveData<List<Schedule>> selectAll();
 
     /**
      * Selects a Schedule by UUID.
@@ -57,6 +58,6 @@ public interface ScheduleDao {
      * @return The selected Schedule.
      */
     @Query("SELECT * FROM " + Schedule.TABLE_NAME + " WHERE uuid = :uuid")
-    Schedule selectByUUID(long uuid);
+    LiveData<Schedule> selectByUUID(long uuid);
 
 }
