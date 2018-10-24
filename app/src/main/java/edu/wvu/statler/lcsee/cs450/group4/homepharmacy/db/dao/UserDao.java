@@ -2,6 +2,7 @@ package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
@@ -20,7 +21,7 @@ public interface UserDao {
      * @param user The new User.
      * @return The row ID of the newly inserted User.
      */
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(User user);
 
     /**
