@@ -1,6 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.repository;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserRepository {
         userDao = homePharmacyDatabase.userDao();
     }
 
-    public List<User> getAllUsers() {
+    public LiveData<List<User>> getAllUsers() {
         return userDao.selectAll();
     }
 
@@ -27,14 +28,14 @@ public class UserRepository {
     }
 
     public void insert(User user) {
-        new insertAsyncTask(userDao).execute(user);
+        new InsertAsyncTask(userDao).execute(user);
     }
 
-    private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
+    private static class InsertAsyncTask extends AsyncTask<User, Void, Void> {
 
         private UserDao taskUserDao;
 
-        insertAsyncTask(UserDao userDao) {
+        InsertAsyncTask(UserDao userDao) {
             taskUserDao = userDao;
         }
 
@@ -47,14 +48,14 @@ public class UserRepository {
     }
 
     public void update(User user) {
-        new updateAsyncTask(userDao).execute(user);
+        new UpdateAsyncTask(userDao).execute(user);
     }
 
-    private static class updateAsyncTask extends AsyncTask<User, Void, Void> {
+    private static class UpdateAsyncTask extends AsyncTask<User, Void, Void> {
 
         private UserDao taskUserDao;
 
-        updateAsyncTask(UserDao userDao) {
+        UpdateAsyncTask(UserDao userDao) {
             taskUserDao = userDao;
         }
 
@@ -67,14 +68,14 @@ public class UserRepository {
     }
 
     public void delete(User user) {
-        new deleteAsyncTask(userDao).execute(user);
+        new DeleteAsyncTask(userDao).execute(user);
     }
 
-    private static class deleteAsyncTask extends AsyncTask<User, Void, Void> {
+    private static class DeleteAsyncTask extends AsyncTask<User, Void, Void> {
 
         private UserDao taskUserDao;
 
-        deleteAsyncTask(UserDao userDao) {
+        DeleteAsyncTask(UserDao userDao) {
             taskUserDao = userDao;
         }
 
