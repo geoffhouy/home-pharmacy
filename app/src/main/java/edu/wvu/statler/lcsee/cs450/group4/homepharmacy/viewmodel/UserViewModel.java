@@ -2,6 +2,7 @@ package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class UserViewModel extends AndroidViewModel {
         userRepository = new UserRepository(application);
     }
 
-    public List<User> getAllUsers() {
+    public LiveData<List<User>> getAllUsers() {
         return userRepository.getAllUsers();
     }
 
