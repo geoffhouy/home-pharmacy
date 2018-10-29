@@ -20,7 +20,15 @@ public class Medication {
      */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uuid", index = true)
-    private long uuid;
+    public long uuid;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * The name of the medication.
@@ -28,17 +36,41 @@ public class Medication {
     @ColumnInfo(name = "name")
     private String name;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
      * The description of the medication.
      */
     @ColumnInfo(name = "description")
     private String description;
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     /**
      * The remaining amount of medication.
      */
     @ColumnInfo(name = "count")
     private int count;
+
+    public long getOwnerUuid() {
+        return ownerUuid;
+    }
+
+    public void setOwnerUuid(long ownerUuid) {
+        this.ownerUuid = ownerUuid;
+    }
 
     /**
      * The universally unique identifier of the User who created the medication.
@@ -50,42 +82,6 @@ public class Medication {
         this.name = name;
         this.description = description;
         this.count = count;
-        this.ownerUuid = ownerUuid;
-    }
-
-    public long getUUID() {
-        return this.uuid;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getCount() {
-        return this.count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public long getOwnerUUID() {
-        return ownerUuid;
-    }
-
-    public void setOwnerUUID(long ownerUuid) {
         this.ownerUuid = ownerUuid;
     }
 

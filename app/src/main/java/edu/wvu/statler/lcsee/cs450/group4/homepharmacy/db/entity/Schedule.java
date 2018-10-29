@@ -23,25 +23,61 @@ public class Schedule {
      */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uuid", index = true)
-    private long uuid;
+    public long uuid;
+
+    public String getTimes() {
+        return times;
+    }
+
+    public void setTimes(String times) {
+        this.times = times;
+    }
 
     /**
      * The time(s) of the schedule.
      */
     @ColumnInfo(name = "times")
-    private List<String> times;
+    private String times;
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
     /**
      * The start date of the schedule.
      */
     @ColumnInfo(name = "start_date")
-    private Date startDate;
+    private String startDate;
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public static String getTableName() {
+        return TABLE_NAME;
+    }
 
     /**
      * The end date of the schedule.
      */
     @ColumnInfo(name = "end_date")
-    private Date endDate;
+    private String endDate;
+
+    public long getMedicationUuid() {
+        return medicationUuid;
+    }
+
+    public void setMedicationUuid(long medicationUuid) {
+        this.medicationUuid = medicationUuid;
+    }
 
     /**
      * The universally unique identifier of the Medication to take.
@@ -49,46 +85,10 @@ public class Schedule {
     @ColumnInfo(name = "medication_uuid")
     private long medicationUuid;
 
-    public Schedule(List<String> times, Date startDate, Date endDate, long medicationUuid) {
+    public Schedule(String times, String startDate, String endDate, long medicationUuid) {
         this.times = times;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.medicationUuid = medicationUuid;
-    }
-
-    public long getUUID() {
-        return this.uuid;
-    }
-
-    public List<String> getTimes() {
-        return this.times;
-    }
-
-    public void setTimes(List<String> times) {
-        this.times = times;
-    }
-
-    public Date getStartDate() {
-        return this.startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return this.endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public long getMedicationUUID() {
-        return this.medicationUuid;
-    }
-
-    public void setMedicationUUID(long medicationUuid) {
         this.medicationUuid = medicationUuid;
     }
 

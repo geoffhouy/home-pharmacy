@@ -20,13 +20,29 @@ public class User {
      */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uuid", index = true)
-    private long uuid;
+    public long uuid;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * The name of the user.
      */
     @ColumnInfo(name = "name")
     private String name;
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
 
     /**
      * The PIN of the user.
@@ -36,26 +52,6 @@ public class User {
 
     public User(String name, String pin) {
         this.name = name;
-        this.pin = pin;
-    }
-
-    public long getUUID() {
-        return this.uuid;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPIN() {
-        return this.pin;
-    }
-
-    public void setPIN(String pin) {
         this.pin = pin;
     }
 
