@@ -1,5 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -13,6 +15,7 @@ import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 /**
  * Data Access Object for User.
  */
+@Dao
 public interface UserDao {
 
     /**
@@ -42,13 +45,16 @@ public interface UserDao {
     @Delete
     int delete(User user);
 
+    @Query("DELETE FROM " + User.TABLE_NAME)
+    void deleteAll();
+
     /**
      * Selects all Users in the table.
      *
      * @return A List of all Users in the table.
      */
     @Query("SELECT * FROM " + User.TABLE_NAME)
-    List<User> selectAll();
+    LiveData<List<User>> selectAll();
 
     /**
      * Selects a User by UUID.

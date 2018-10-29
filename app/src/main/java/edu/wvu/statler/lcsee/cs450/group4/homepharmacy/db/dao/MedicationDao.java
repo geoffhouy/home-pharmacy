@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -13,6 +14,7 @@ import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Medication;
 /**
  * Data Access Object for Medication.
  */
+@Dao
 public interface MedicationDao {
 
     /**
