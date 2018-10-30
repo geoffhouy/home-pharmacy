@@ -10,6 +10,9 @@ import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.HomePharmacyDatabase;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao.UserDao;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 
+/**
+ * API for User table in HomePharmacyDatabase.
+ */
 public class UserRepository {
 
     private UserDao userDao;
@@ -19,11 +22,11 @@ public class UserRepository {
         userDao = homePharmacyDatabase.userDao();
     }
 
-    public LiveData<List<User>> getAllUsers() {
+    public LiveData<List<User>> selectAll() {
         return userDao.selectAll();
     }
 
-    public User getUserByUUID(long uuid) {
+    public User selectByUUID(long uuid) {
         return userDao.selectByUUID(uuid);
     }
 
