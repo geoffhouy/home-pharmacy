@@ -9,6 +9,9 @@ import java.util.List;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.repository.UserRepository;
 
+/**
+ * Encapsulates database functions for the User table into an AndroidViewModel.
+ */
 public class UserViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
@@ -19,22 +22,25 @@ public class UserViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<User>> getAllUsers() {
-        return userRepository.getAllUsers();
+        return userRepository.selectAll();
     }
 
     public User getUserByUUID(long uuid) {
-        return userRepository.getUserByUUID(uuid);
+        return userRepository.selectByUUID(uuid);
     }
 
-    public void insert(User user) {
+    public void createUser(String name, String pin) {
+        User user = new User(name, pin);
         userRepository.insert(user);
     }
 
-    public void update(User user) {
+    public void editUser(User user, String name, String pin) {
+        user.setName(name);
+        user.setPin(pin);
         userRepository.update(user);
     }
 
-    public void delete(User user) {
+    public void deleteUser(User user) {
         userRepository.delete(user);
     }
 
