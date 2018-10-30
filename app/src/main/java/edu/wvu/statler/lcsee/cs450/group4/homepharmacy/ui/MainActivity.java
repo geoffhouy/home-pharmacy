@@ -99,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_USER_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            User user = new User(data.getStringExtra(NewUserActivity.EXTRA_REPLY), "1234");
-            userViewModel.insert(user);
+            userViewModel.createUser(data.getStringExtra(NewUserActivity.EXTRA_REPLY), "1234");
         } else {
             Toast.makeText(
                     getApplicationContext(),
