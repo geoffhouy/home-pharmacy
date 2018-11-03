@@ -14,12 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.List;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Pill.PillMenu;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Schedule.ScheduleMenu;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.User.UserMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.adapter.UserListAdapter;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.UserViewModel;
 
@@ -32,11 +36,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_menu);
+
+        findViewById(R.id.SchedulesButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this,ScheduleMenu.class));
+            }
+        });
+        findViewById(R.id.PillsButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this,PillMenu.class));
+            }
+        });
+        findViewById(R.id.UsersButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this,UserMenu.class));
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //
 
+        //
+        /*
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final UserListAdapter userListAdapter = new UserListAdapter(this);
         recyclerView.setAdapter(userListAdapter);
@@ -52,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);*/
         /*
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
-        fab.setOnClickListener(new View.OnClickListener() {
+        /*fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -70,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
             }
 
-        });
+        });*/
     }
 
     @Override

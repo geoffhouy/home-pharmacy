@@ -4,4 +4,11 @@
     <string name="hint_user">User...</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">User not saved because it is empty.</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_activity_schedule_menu">ScheduleMenu</string>
+    <string name="title_activity_schedule_editor">ScheduleEditor</string>
+    <string name="title_activity_pill_menu">PillMenu</string>
+    <string name="title_activity_pill_editor">PillEditor</string>
+    <string name="title_activity_user_menu">UserMenu</string>
+    <string name="title_activity_user_editor">UserEditor</string>
 </resources>
