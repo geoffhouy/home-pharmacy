@@ -31,12 +31,14 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ScheduleInformation"
         android:layout_width="576dp"
-        android:layout_height="231dp"
+        android:layout_height="171dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ScheduleAddButton" />
 
 </android.support.constraint.ConstraintLayout>

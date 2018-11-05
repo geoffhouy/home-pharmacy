@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity;
 
 public class UserEditor extends AppCompatActivity {
 
@@ -19,6 +21,20 @@ public class UserEditor extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        findViewById(R.id.UserEditorAddButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                finish();
+            }
+        });
+        findViewById(R.id.UserEditorDeleteButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                finish();
+            }
+        });
+    }
 }

@@ -19,6 +19,20 @@ public class ScheduleEditor extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+        findViewById(R.id.ScheduleEditorAddButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                finish();
+            }
+        });
+        findViewById(R.id.ScheduleEditorDeleteButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                finish();
+            }
+        });
+    }
 }

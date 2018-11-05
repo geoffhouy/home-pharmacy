@@ -23,5 +23,21 @@ public class PillEditor extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        findViewById(R.id.PillEditorAddButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                //Add current pill
+                finish();
+            }
+        });
+        findViewById(R.id.PillEditorDeleteButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                //Add function to delete current selected pill
+                finish();
+            }
+        });
     }
 }

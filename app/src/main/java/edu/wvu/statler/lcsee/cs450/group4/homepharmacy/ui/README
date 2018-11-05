@@ -1,3 +1,8 @@
 TODO LIST
 
-Need to format editor layouts and activities
+Need to finish naming text fields for editor windows
+Need to add date picker for dates and times, using fragments when clicking on edit tabs would work
+
+REMINDER
+We are using android Oreo 8.1
+Use adp tcpip 5555 to start debugging and then adb connect to the ip

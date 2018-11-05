@@ -54,12 +54,12 @@
         <activity
             android:name=".ui.Pill.PillEditor"
             android:label="@string/title_activity_pill_editor"
-            android:parentActivityName=".ui.MainActivity"
+            android:parentActivityName=".ui.Pill.PillMenu"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Pill.PillMenu" />
         </activity>
         <activity
             android:name=".ui.User.UserMenu"
