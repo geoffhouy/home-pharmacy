@@ -1,6 +1,6 @@
 TODO LIST
 Need to add date picker for dates and times, using fragments when clicking on edit tabs would work
-
+https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext/14933515
 REMINDER
 We are using android Oreo 8.1
 Use adp tcpip 5555 to start debugging and then adb connect to the ip
