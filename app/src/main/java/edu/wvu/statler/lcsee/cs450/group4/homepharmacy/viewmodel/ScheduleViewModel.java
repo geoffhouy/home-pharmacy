@@ -2,6 +2,7 @@ package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ScheduleViewModel extends AndroidViewModel {
         scheduleRepository = new ScheduleRepository(application);
     }
 
-    public List<Schedule> getAllSchedules() {
+    public LiveData<List<Schedule>> getAllSchedules() {
         return scheduleRepository.selectAll();
     }
 
@@ -28,16 +29,18 @@ public class ScheduleViewModel extends AndroidViewModel {
         return scheduleRepository.selectByUUID(uuid);
     }
 
-    public void createSchedule(String times, String startDate, String endDate, long medicationUuid) {
-        Schedule schedule = new Schedule(times, startDate, endDate, medicationUuid);
+    public void createSchedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
+        Schedule schedule = new Schedule(name, timestamp, numPillsToTake, pillName, dispenserNumber, userName);
         scheduleRepository.insert(schedule);
     }
 
-    public void editSchedule(Schedule schedule, String times, String startDate, String endDate, long medicationUuid) {
-        schedule.setTimes(times);
-        schedule.setStartDate(startDate);
-        schedule.setEndDate(endDate);
-        schedule.setMedicationUuid(medicationUuid);
+    public void editSchedule(Schedule schedule, String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
+        schedule.setName(name);
+        schedule.setTimestamp(timestamp);
+        schedule.setNumPillsToTake(numPillsToTake);
+        schedule.setPillName(pillName);
+        schedule.setDispenserNumber(dispenserNumber);
+        schedule.setUserName(userName);
         scheduleRepository.update(schedule);
     }
 
