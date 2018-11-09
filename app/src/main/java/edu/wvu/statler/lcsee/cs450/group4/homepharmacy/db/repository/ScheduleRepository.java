@@ -1,6 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.repository;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class ScheduleRepository {
         scheduleDao = homePharmacyDatabase.scheduleDao();
     }
 
-    public List<Schedule> selectAll() {
+    public LiveData<List<Schedule>> selectAll() {
         return scheduleDao.selectAll();
     }
 
