@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".ui.NewUserActivity" />
         <activity
-            android:name=".ui.Schedule.ScheduleMenu"
+            android:name=".ui.schedule.ScheduleMenu"
             android:label="@string/title_activity_schedule_menu"
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -32,17 +32,17 @@
                 android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.Schedule.ScheduleEditor"
+            android:name=".ui.schedule.ScheduleEditor"
             android:label="@string/title_activity_schedule_editor"
-            android:parentActivityName=".ui.Schedule.ScheduleMenu"
+            android:parentActivityName=".ui.schedule.ScheduleMenu"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Schedule.ScheduleMenu" />
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu" />
         </activity>
         <activity
-            android:name=".ui.Pill.PillMenu"
+            android:name=".ui.pill.PillMenu"
             android:label="@string/title_activity_pill_menu"
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -52,17 +52,17 @@
                 android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.Pill.PillEditor"
+            android:name=".ui.pill.PillEditor"
             android:label="@string/title_activity_pill_editor"
-            android:parentActivityName=".ui.Pill.PillMenu"
+            android:parentActivityName=".ui.pill.PillMenu"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Pill.PillMenu" />
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu" />
         </activity>
         <activity
-            android:name=".ui.User.UserMenu"
+            android:name=".ui.user.UserMenu"
             android:label="@string/title_activity_user_menu"
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -72,14 +72,14 @@
                 android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.User.UserEditor"
+            android:name=".ui.user.UserEditor"
             android:label="@string/title_activity_user_editor"
-            android:parentActivityName=".ui.User.UserMenu"
+            android:parentActivityName=".ui.user.UserMenu"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.User.UserMenu" />
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu" />
         </activity>
     </application>
 
