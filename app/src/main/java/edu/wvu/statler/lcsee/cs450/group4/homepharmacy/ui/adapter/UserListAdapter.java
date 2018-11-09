@@ -18,11 +18,11 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
     class UserViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView userItemView;
+        private final TextView userTextView;
 
-        private UserViewHolder(View itemView) {
-            super(itemView);
-            userItemView = itemView.findViewById(R.id.textView);
+        private UserViewHolder(View view) {
+            super(view);
+            userTextView = view.findViewById(R.id.textView);
         }
 
     }
@@ -36,17 +36,19 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = layoutInflater.inflate(R.layout.recyclerview_user, parent, false);
-        return new UserViewHolder(itemView);
+        View view = layoutInflater.inflate(R.layout.recyclerview_user, parent, false);
+        return new UserViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int position) {
         if (users != null) {
             User current = users.get(position);
-            userViewHolder.userItemView.setText(current.getName());
+            userViewHolder.userTextView.setText("UUID: " + current.uuid
+                    + "\nName: " + current.getName()
+                    + "\nPIN: " + current.getPin());
         } else {
-            userViewHolder.userItemView.setText("No users.");
+            userViewHolder.userTextView.setText("No users.");
         }
     }
 
