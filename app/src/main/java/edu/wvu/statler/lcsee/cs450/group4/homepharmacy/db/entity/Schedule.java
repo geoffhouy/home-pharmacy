@@ -4,92 +4,91 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * Represents one record of the Schedule table.
  */
 @Entity(tableName = Schedule.TABLE_NAME)
 public class Schedule {
 
-    /**
-     * The name of the Schedule table.
-     */
     public static final String TABLE_NAME = "schedules";
 
-    /**
-     * The universally unique identifier of the schedule.
-     */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uuid", index = true)
     public long uuid;
 
-    public String getTimes() {
-        return times;
+    @ColumnInfo(name = "name")
+    private String name;
+
+    @ColumnInfo(name = "timestamp")
+    private long timestamp;
+
+    @ColumnInfo(name = "num_pills")
+    private int numPillsToTake;
+
+    @ColumnInfo(name = "pill_name")
+    private String pillName;
+
+    @ColumnInfo(name = "dispenser")
+    private int dispenserNumber;
+
+    @ColumnInfo(name = "user_name")
+    private String userName;
+
+    public Schedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
+        this.name = name;
+        this.timestamp = timestamp;
+        this.numPillsToTake = numPillsToTake;
+        this.pillName = pillName;
+        this.dispenserNumber = dispenserNumber;
+        this.userName = userName;
     }
 
-    public void setTimes(String times) {
-        this.times = times;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * The time(s) of the schedule.
-     */
-    @ColumnInfo(name = "times")
-    private String times;
-
-    public String getStartDate() {
-        return startDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    /**
-     * The start date of the schedule.
-     */
-    @ColumnInfo(name = "start_date")
-    private String startDate;
-
-    public String getEndDate() {
-        return endDate;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public int getNumPillsToTake() {
+        return numPillsToTake;
     }
 
-    public static String getTableName() {
-        return TABLE_NAME;
+    public void setNumPillsToTake(int numPillsToTake) {
+        this.numPillsToTake = numPillsToTake;
     }
 
-    /**
-     * The end date of the schedule.
-     */
-    @ColumnInfo(name = "end_date")
-    private String endDate;
-
-    public long getMedicationUuid() {
-        return medicationUuid;
+    public String getPillName() {
+        return pillName;
     }
 
-    public void setMedicationUuid(long medicationUuid) {
-        this.medicationUuid = medicationUuid;
+    public void setPillName(String pillName) {
+        this.pillName = pillName;
     }
 
-    /**
-     * The universally unique identifier of the Medication to take.
-     */
-    @ColumnInfo(name = "medication_uuid")
-    private long medicationUuid;
+    public int getDispenserNumber() {
+        return dispenserNumber;
+    }
 
-    public Schedule(String times, String startDate, String endDate, long medicationUuid) {
-        this.times = times;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.medicationUuid = medicationUuid;
+    public void setDispenserNumber(int dispenserNumber) {
+        this.dispenserNumber = dispenserNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }

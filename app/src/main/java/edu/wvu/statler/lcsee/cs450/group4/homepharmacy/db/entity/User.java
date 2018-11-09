@@ -10,17 +10,22 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = User.TABLE_NAME)
 public class User {
 
-    /**
-     * The name of the User table.
-     */
     public static final String TABLE_NAME = "users";
 
-    /**
-     * The universally unique identifier of the user.
-     */
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uuid", index = true)
     public long uuid;
+
+    @ColumnInfo(name = "name")
+    private String name;
+
+    @ColumnInfo(name = "pin")
+    private String pin;
+
+    public User(String name, String pin) {
+        this.name = name;
+        this.pin = pin;
+    }
 
     public String getName() {
         return name;
@@ -30,28 +35,11 @@ public class User {
         this.name = name;
     }
 
-    /**
-     * The name of the user.
-     */
-    @ColumnInfo(name = "name")
-    private String name;
-
     public String getPin() {
         return pin;
     }
 
     public void setPin(String pin) {
-        this.pin = pin;
-    }
-
-    /**
-     * The PIN of the user.
-     */
-    @ColumnInfo(name = "pin")
-    private String pin;
-
-    public User(String name, String pin) {
-        this.name = name;
         this.pin = pin;
     }
 
