@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -45,12 +46,18 @@ public interface ScheduleDao {
     int delete(Schedule schedule);
 
     /**
+     * Deletes all Schedules from the table.
+     */
+    @Query("DELETE FROM " + Schedule.TABLE_NAME)
+    void deleteAll();
+
+    /**
      * Selects all Schedules in the table.
      *
      * @return A List of all Schedules in the table.
      */
     @Query("SELECT * FROM " + Schedule.TABLE_NAME)
-    List<Schedule> selectAll();
+    LiveData<List<Schedule>> selectAll();
 
     /**
      * Selects a Schedule by UUID.

@@ -45,6 +45,9 @@ public interface UserDao {
     @Delete
     int delete(User user);
 
+    /**
+     * Deletes all Users from the table.
+     */
     @Query("DELETE FROM " + User.TABLE_NAME)
     void deleteAll();
 
