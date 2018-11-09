@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.Pill.PillMenu"
+    tools:context=".ui.pill.PillMenu"
     tools:showIn="@layout/activity_pill_menu">
 
     <android.support.v7.widget.RecyclerView

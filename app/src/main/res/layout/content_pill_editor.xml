@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.Pill.PillEditor"
+    tools:context=".ui.pill.PillEditor"
     tools:showIn="@layout/activity_pill_editor">
 
     <Button
@@ -86,6 +86,7 @@
                 android:layout_height="match_parent">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/PillEditorNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Number of Pills"
