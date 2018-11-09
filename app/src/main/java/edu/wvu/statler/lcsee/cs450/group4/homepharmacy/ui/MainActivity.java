@@ -1,30 +1,18 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
-
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Pill.PillMenu;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.Schedule.ScheduleMenu;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.User.UserMenu;
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.adapter.UserListAdapter;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.UserViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -131,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(
                     getApplicationContext(),
-                    R.string.empty_not_saved,
+                    "User not saved because no information was entered.",
                     Toast.LENGTH_LONG).show();
         }
     }
