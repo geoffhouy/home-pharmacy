@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.UserViewModel;
 
 public class UserEditor extends AppCompatActivity {
@@ -63,5 +64,25 @@ public class UserEditor extends AppCompatActivity {
                 finish();
             }
         });
+
+        getIncomingIntent();
     }
+
+    private void getIncomingIntent() {
+        if (getIntent().hasExtra("uuid")) {
+            long uuid = getIntent().getLongExtra("uuid", -1);
+            if (uuid != -1) {
+                final UserViewModel userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+
+                final User user = userViewModel.getUserByUUID(uuid);
+
+                final EditText editTextName = findViewById(R.id.UserEditorNameInput);
+                final EditText editTextPin = findViewById(R.id.UserEditorPinInput);
+
+                editTextName.setText(user.getName());
+                editTextPin.setText(user.getPin());
+            }
+        }
+    }
+
 }
