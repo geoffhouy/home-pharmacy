@@ -6,7 +6,12 @@ We are using android Oreo 8.1
 Use adp tcpip 5555 to start debugging and then adb connect to the ip
 
 
+Update 1:
 Database tables updated to match input screens exactly.
 Added live list of users/pills/schedules to User/Pill/ScheduleMenu. Each user/pill/schedule needs to become a button.
 Added functionality to add button in User/Pill/ScheduleEditor. The selected user/pill/schedule somehow needs to be passed for delete to work.
 For schedules, time and date need to be converted to long for the timestamp.
+
+Update 2:
+Entities are now clickable in the RecyclerView lists. Information (like UUIDs) can be passed with the intent. With that information, I can autofill the text fields on the Editor screen.
+However, I think (maybe) a new User/Pill/ScheduleEditor may need to be made. The buttons remain as "add" and "delete" instead of "edit" and "delete".
