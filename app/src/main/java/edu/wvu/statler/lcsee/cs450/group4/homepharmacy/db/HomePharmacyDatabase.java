@@ -53,6 +53,7 @@ public abstract class HomePharmacyDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room
                             .databaseBuilder(context.getApplicationContext(), HomePharmacyDatabase.class, "home-pharmacy")
+                            .allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .addCallback(testCallback)
                             .build();
