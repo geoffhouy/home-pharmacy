@@ -17,6 +17,8 @@ public class UserEditor extends AppCompatActivity {
 
     public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
 
+    public static User selectedUser = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,31 +59,35 @@ public class UserEditor extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
-
-                // Have to get the user to delete
-                // userViewModel.deleteUser(user);
-
+                if (selectedUser != null) {
+                    userViewModel.deleteUser(selectedUser);
+                    Toast.makeText(getApplicationContext(), "User \""+ selectedUser.getName() + "\" deleted!", Toast.LENGTH_LONG).show();
+                    selectedUser = null;
+                } else {
+                    Toast.makeText(getApplicationContext(), "User not deleted.", Toast.LENGTH_LONG).show();
+                }
                 finish();
             }
         });
 
-        getIncomingIntent();
+        //
+
+        long uuid = getIncomingIntent();
+        if (uuid != -1) {
+            final User user = userViewModel.getUserByUUID(uuid);
+            editTextName.setText(user.getName());
+            editTextPin.setText(user.getPin());
+            selectedUser = user;
+        }
+
+        //
     }
 
-    private void getIncomingIntent() {
+    private long getIncomingIntent() {
         if (getIntent().hasExtra("uuid")) {
-            long uuid = getIntent().getLongExtra("uuid", -1);
-            if (uuid != -1) {
-                final UserViewModel userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-
-                final User user = userViewModel.getUserByUUID(uuid);
-
-                final EditText editTextName = findViewById(R.id.UserEditorNameInput);
-                final EditText editTextPin = findViewById(R.id.UserEditorPinInput);
-
-                editTextName.setText(user.getName());
-                editTextPin.setText(user.getPin());
-            }
+            return getIntent().getLongExtra("uuid", -1);
+        } else {
+            return -1;
         }
     }
 

@@ -57,6 +57,7 @@ public class UserMenu extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
+                UserEditor.selectedUser = null;
                 startActivity(new Intent(UserMenu.this, UserEditor.class));
             }
 
