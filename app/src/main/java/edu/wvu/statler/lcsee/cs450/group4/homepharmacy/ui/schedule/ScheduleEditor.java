@@ -1,6 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -10,10 +11,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -53,15 +56,31 @@ public class ScheduleEditor extends AppCompatActivity {
             }
         });
 
-        //Do something similar to above here for the time
-
-        //
+        final TextInputEditText timeEdit = (TextInputEditText) findViewById(R.id.ScheduleEditorTimeInput);
+        final TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                myCalendar.set(Calendar.HOUR_OF_DAY,i);
+                myCalendar.set(Calendar.MINUTE,i1);
+                if(myCalendar.get(Calendar.HOUR_OF_DAY) >= 12){
+                    timeEdit.setText(i+":"+i1+" PM");
+                }
+                else{
+                    timeEdit.setText(i+":"+i1+" AM");
+                }
+            }
+        };
+        timeEdit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                new TimePickerDialog(ScheduleEditor.this,time,myCalendar.get(Calendar.HOUR_OF_DAY),myCalendar.get(Calendar.MINUTE),false).show();
+            }
+        });
 
         final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
 
         final EditText editTextName = findViewById(R.id.ScheduleEditorNameInput);
-        // date
-        // time
+        // myCalendar has all the information for the YEAR,MONTH,DAY_OF_MONTH, HOUR_OF_DAY, and MINUTE, just use myCalendar.get(Calendar.WHATEVER_YOU_WANT)
         final EditText editTextNumPills = findViewById(R.id.ScheduleEditorNumberOfPillsInput);
         final EditText editTextPillName = findViewById(R.id.ScheduleEditorPillNameInput);
         final EditText editTextDispenserNumber = findViewById(R.id.ScheduleEditorDispenserNumberInput);
