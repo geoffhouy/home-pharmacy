@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".Notifier"
+            android:exported="false"/>
+
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
@@ -80,6 +85,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu" />
+        </activity>
+        <activity android:name=".NotificationActivity"
+            android:label="NotificationActivity"
+            android:theme="@android:style/Theme.Dialog">
         </activity>
     </application>
 

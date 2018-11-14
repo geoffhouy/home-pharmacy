@@ -1,13 +1,17 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui;
 
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu;
@@ -41,9 +45,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,UserMenu.class));
             }
         });
+        findViewById(R.id.TestButton).setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View view){
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("Test");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
+        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent msgIntent = new Intent(this, Notifier.class);
+        startService(msgIntent);
     }
 
     @Override

@@ -1,5 +1,6 @@
 TODO LIST
-Need to add date picker for dates and times, using fragments when clicking on edit tabs would work
+Need to change notifier and notificationActivity to work with the notification format we want to give back to the user.
+I also want notifier to keep track of the time stamps from the schedule.
 https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext/14933515
 https://www.codingdemos.com/android-timepicker-edittext/
 REMINDER

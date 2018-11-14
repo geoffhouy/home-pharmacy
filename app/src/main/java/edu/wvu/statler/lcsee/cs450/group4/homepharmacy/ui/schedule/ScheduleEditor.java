@@ -125,7 +125,5 @@ public class ScheduleEditor extends AppCompatActivity {
                 finish();
             }
         });
-
-        //
     }
 }
