@@ -45,21 +45,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,UserMenu.class));
             }
         });
-        findViewById(R.id.TestButton).setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view){
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle("Test");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-            }
-        });
+//        findViewById(R.id.TestButton).setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View view){
+//                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+//                alertDialog.setTitle("Test");
+//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                alertDialog.show();
+//            }
+//        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

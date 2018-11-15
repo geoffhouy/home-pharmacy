@@ -57,15 +57,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PillsButton" />
 
-    <Button
-        android:id="@+id/TestButton"
-        android:layout_width="368dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="116dp"
-        android:text="Test Alert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UsersButton" />
 </android.support.constraint.ConstraintLayout>
