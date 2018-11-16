@@ -17,6 +17,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -92,7 +93,7 @@ public class ScheduleEditor extends AppCompatActivity {
             public void onClick(View view) {
                 if (TextUtils.isEmpty(editTextName.getText())
                         || TextUtils.isEmpty(dateEdit.getText())
-                       // || TextUtils.isEmpty(timeEdit.getText())
+                        || TextUtils.isEmpty(timeEdit.getText())
                         || TextUtils.isEmpty(editTextNumPills.getText())
                         || TextUtils.isEmpty(editTextPillName.getText())
                         || TextUtils.isEmpty(editTextDispenserNumber.getText())
@@ -100,10 +101,13 @@ public class ScheduleEditor extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Schedule not saved due to missing information.", Toast.LENGTH_LONG).show();
                 } else {
                     String scheduleName = editTextName.getText().toString();
+
                     // Convert date and time to one timestamp
-                    long timestamp = 0l;
+                    long timestamp = myCalendar.getTimeInMillis();
+
                     int numPills = Integer.parseInt(editTextNumPills.getText().toString());
                     String pillName = editTextPillName.getText().toString();
+
                     int dispenserNumber = Integer.parseInt(editTextDispenserNumber.getText().toString());
                     String userName = editTextUser.getText().toString();
 
