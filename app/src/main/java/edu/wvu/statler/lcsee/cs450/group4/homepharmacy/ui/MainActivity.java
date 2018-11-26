@@ -1,21 +1,36 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.NotificationActivity;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,8 +78,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent msgIntent = new Intent(this, Notifier.class);
-        startService(msgIntent);
+        AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE){
+            manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
+            //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
+        }else{
+            manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
+            //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
+        }
+        //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
+        //Log.d(TAG, "onCreate: ");
     }
 
     @Override

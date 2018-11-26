@@ -1,6 +1,5 @@
 TODO LIST
-Need to change notifier and notificationActivity to work with the notification format we want to give back to the user.
-I also want notifier to keep track of the time stamps from the schedule.
+Instead of notifications im using alert boxes because we can edit them a lot more and they appear anywhere. We need to set the alarms that are in the main activity into the schedule editor sections.
 https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext/14933515
 https://www.codingdemos.com/android-timepicker-edittext/
 REMINDER
