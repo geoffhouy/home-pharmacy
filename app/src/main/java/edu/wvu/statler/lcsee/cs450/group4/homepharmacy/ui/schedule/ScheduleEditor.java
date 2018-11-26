@@ -1,8 +1,13 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.ScheduleViewModel;
 
@@ -87,6 +93,10 @@ public class ScheduleEditor extends AppCompatActivity {
         final EditText editTextDispenserNumber = findViewById(R.id.ScheduleEditorDispenserNumberInput);
         final EditText editTextUser = findViewById(R.id.ScheduleEditorUserInput);
 
+        final AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        final Context context = this;
+
         findViewById(R.id.ScheduleEditorAddButton).setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -113,7 +123,26 @@ public class ScheduleEditor extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "Schedule \"" + scheduleName + "\" saved!", Toast.LENGTH_LONG).show();
                     scheduleViewModel.createSchedule(scheduleName, timestamp, numPills,pillName, dispenserNumber, userName);
+
                     //TODO Geoff, Here is where you make the alarm stuff like in main activity
+                    Intent intent = new Intent(getApplicationContext(), Notifier.class);
+
+                    intent.putExtra("UserName", userName);
+                    intent.putExtra("PillName", pillName);
+                    intent.putExtra("Timestamp", timestamp);
+                    intent.putExtra("NumPills", numPills);
+                    intent.putExtra("DispenserNumber", dispenserNumber);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                        //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
+                    } else {
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                        //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
+                    }
+
                     finish();
                 }
             }

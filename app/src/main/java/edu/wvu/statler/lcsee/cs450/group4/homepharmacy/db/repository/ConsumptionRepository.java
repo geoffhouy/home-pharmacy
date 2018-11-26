@@ -1,6 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.repository;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class ConsumptionRepository {
         consumptionDao = homePharmacyDatabase.consumptionDao();
     }
 
-    public List<Consumption> selectAll() {
+    public LiveData<List<Consumption>> selectAll() {
         return consumptionDao.selectAll();
     }
 

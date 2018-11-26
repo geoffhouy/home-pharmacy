@@ -4,6 +4,8 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,13 +24,16 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.NotificationActivity;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.ScheduleViewModel;
 
 import static android.content.ContentValues.TAG;
 
@@ -80,23 +85,40 @@ public class MainActivity extends AppCompatActivity {
 
 
         //TODO This should loop through all timestamps in the DB and make an alarm for every one
-        AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
-        Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
-        //putExtras are going to be used to push the information of the pill and the user to the notifcation itself
-        //name is the name of the field and the value is what we want to actually send
-        myIntent.putExtra("PillName","TEST PILL");
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE){
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-            manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
-            //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
-        }else{
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-            manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
-            //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
+        final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
+
+        List<Schedule> schedules = scheduleViewModel.getAllSchedules().getValue();
+
+        if (schedules != null && schedules.size() > 0) {
+            for (Schedule schedule : schedules) {
+                AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+                Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
+                //putExtras are going to be used to push the information of the pill and the user to the notifcation itself
+                //name is the name of the field and the value is what we want to actually send
+
+                myIntent.putExtra("PillName", schedule.getName());
+                myIntent.putExtra("Timestamp", schedule.getTimestamp());
+                myIntent.putExtra("PillName", schedule.getPillName());
+                myIntent.putExtra("NumPills", schedule.getNumPillsToTake());
+                myIntent.putExtra("DispenserNumber", schedule.getDispenserNumber());
+
+                // TODO use schedule.get___ to get the values needed and add to intent
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+                    manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                    //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
+                } else {
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+                    manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                    //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
+                }
+                //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
+                //Log.d(TAG, "onCreate: ");
+            }
         }
-        //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
-        //Log.d(TAG, "onCreate: ");
     }
 
     @Override

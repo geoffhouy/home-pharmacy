@@ -1,5 +1,6 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -30,7 +31,7 @@ public interface ConsumptionDao {
     void deleteAll();
 
     @Query("SELECT * FROM " + Consumption.TABLE_NAME)
-    List<Consumption> selectAll();
+    LiveData<List<Consumption>> selectAll();
 
     @Query("SELECT * FROM " + Consumption.TABLE_NAME + " WHERE uuid = :uuid")
     Consumption selectByUUID(long uuid);
