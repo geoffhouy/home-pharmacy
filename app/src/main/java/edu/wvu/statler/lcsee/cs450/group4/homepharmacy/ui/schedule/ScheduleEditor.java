@@ -113,6 +113,7 @@ public class ScheduleEditor extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "Schedule \"" + scheduleName + "\" saved!", Toast.LENGTH_LONG).show();
                     scheduleViewModel.createSchedule(scheduleName, timestamp, numPills,pillName, dispenserNumber, userName);
+                    //TODO Geoff, Here is where you make the alarm stuff like in main activity
                     finish();
                 }
             }

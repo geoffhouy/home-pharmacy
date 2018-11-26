@@ -78,14 +78,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //TODO This should loop through all timestamps in the DB and make an alarm for every one
         AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
         Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+        //putExtras are going to be used to push the information of the pill and the user to the notifcation itself
+        //name is the name of the field and the value is what we want to actually send
+        myIntent.putExtra("PillName","TEST PILL");
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE){
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
             manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
             //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
         }else{
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
             manager.setRepeating(manager.RTC_WAKEUP,System.currentTimeMillis()+5000,5000,pendingIntent);
             //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
         }
