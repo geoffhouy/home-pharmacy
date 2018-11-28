@@ -10,4 +10,5 @@
     <string name="title_activity_pill_editor">PillEditor</string>
     <string name="title_activity_user_menu">UserMenu</string>
     <string name="title_activity_user_editor">UserEditor</string>
+    <string name="title_activity_history_menu">HistoryMenu</string>
 </resources>

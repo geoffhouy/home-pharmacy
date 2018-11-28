@@ -15,8 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <receiver android:name=".Notifier"/>
+        <receiver android:name=".Notifier" />
 
         <activity
             android:name=".ui.MainActivity"
@@ -93,7 +92,15 @@
         <activity
             android:name=".NotificationActivity"
             android:theme="@android:style/Theme.Dialog" />
-
+        <activity
+            android:name=".ui.history.HistoryMenu"
+            android:label="@string/title_activity_history_menu"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,41 +1,28 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.NotificationActivity;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.history.HistoryMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.ScheduleViewModel;
-
-import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 startActivity(new Intent(MainActivity.this,UserMenu.class));
+            }
+        });
+        findViewById(R.id.HistoryButton).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(MainActivity.this,HistoryMenu.class));
             }
         });
 //        findViewById(R.id.TestButton).setOnClickListener(new View.OnClickListener(){

@@ -1,5 +1,11 @@
 TODO LIST
-Instead of notifications im using alert boxes because we can edit them a lot more and they appear anywhere. We need to set the alarms that are in the main activity into the schedule editor sections.
+Geoff you need to add the history adapter and get it to work in the recyclerview in history/HistoryMenu.
+    I already made the layouts for the recyclerview item layout (But it could be wrong so please look at that)
+    and I made the entire layout for the HistoryMenu.
+
+Connor you need to still input your work into the Notifer.java file and make sure it works
+
+
 https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext/14933515
 https://www.codingdemos.com/android-timepicker-edittext/
 REMINDER
