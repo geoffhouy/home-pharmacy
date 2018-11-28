@@ -26,6 +26,10 @@ public class ScheduleRepository {
         return scheduleDao.selectAll();
     }
 
+    public List<Schedule> selectAllAsList() {
+        return scheduleDao.selectAllAsList();
+    }
+
     public Schedule selectByUUID(long uuid) {
         return scheduleDao.selectByUUID(uuid);
     }

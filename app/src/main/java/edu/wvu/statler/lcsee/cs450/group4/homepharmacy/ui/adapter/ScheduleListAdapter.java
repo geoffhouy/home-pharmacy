@@ -1,6 +1,7 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleEditor;
 
 public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapter.ScheduleViewHolder> {
 
@@ -46,6 +48,10 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, current.getName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, ScheduleEditor.class);
+                intent.putExtra("uuid", current.uuid);
+                context.startActivity(intent);
             }
         });
 

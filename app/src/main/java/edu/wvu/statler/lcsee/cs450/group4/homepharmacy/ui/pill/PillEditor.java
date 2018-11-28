@@ -12,9 +12,12 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Pill;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.PillViewModel;
 
 public class PillEditor extends AppCompatActivity {
+
+    public static Pill selectedPill = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,33 @@ public class PillEditor extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
-
-                // Have to get the pill to delete
-                // pillViewModel.deletePill(pill);
+                if (selectedPill != null) {
+                    pillViewModel.deletePill(selectedPill);
+                    Toast.makeText(getApplicationContext(), "Pill \"" + selectedPill.getName() + "\" deleted!", Toast.LENGTH_LONG).show();
+                    selectedPill = null;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Pill not deleted.", Toast.LENGTH_LONG).show();
+                }
                 finish();
             }
         });
+
+        long uuid = getIncomingIntent();
+        if (uuid != -1) {
+            final Pill pill = pillViewModel.getPillByUUID(uuid);
+            editTextName.setText(pill.getName());
+            editTextDescription.setText(pill.getDescription());
+            editTextDispenser.setText(String.format("%d", pill.getDispenserNumber()));
+            editTextNumber.setText(String.format("%d", pill.getCount()));
+            selectedPill = pill;
+        }
+    }
+
+    private long getIncomingIntent() {
+        if (getIntent().hasExtra("uuid")) {
+            return getIntent().getLongExtra("uuid", -1);
+        } else {
+            return -1;
+        }
     }
 }

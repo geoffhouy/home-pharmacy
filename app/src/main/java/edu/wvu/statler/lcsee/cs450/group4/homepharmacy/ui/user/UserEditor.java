@@ -15,8 +15,6 @@ import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.UserViewModel;
 
 public class UserEditor extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
-
     public static User selectedUser = null;
 
     @Override

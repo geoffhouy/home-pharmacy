@@ -20,7 +20,7 @@ import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.User;
 /**
  * The Room database for Home Pharmacy.
  */
-@Database(entities = {User.class, Pill.class, Schedule.class, Consumption.class}, exportSchema = false, version = 4)
+@Database(entities = {User.class, Pill.class, Schedule.class, Consumption.class}, exportSchema = false, version = 5)
 public abstract class HomePharmacyDatabase extends RoomDatabase {
 
     /**
@@ -85,11 +85,13 @@ public abstract class HomePharmacyDatabase extends RoomDatabase {
         private final UserDao userDao;
         private final PillDao pillDao;
         private final ScheduleDao scheduleDao;
+        private final ConsumptionDao consumptionDao;
 
         PopulateAsyncTask(HomePharmacyDatabase db) {
             userDao = db.userDao();
             pillDao = db.pillDao();
             scheduleDao = db.scheduleDao();
+            consumptionDao = db.consumptionDao();
         }
 
         @Override
@@ -103,8 +105,10 @@ public abstract class HomePharmacyDatabase extends RoomDatabase {
             pillDao.insert(new Pill("Ramen Noodles", "Not a pill", 42, 6, 4));
 
             scheduleDao.deleteAll();
-            scheduleDao.insert(new Schedule("Schedule1", 3842, 3, "Advil", 3, "John Doe"));
-            scheduleDao.insert(new Schedule("Schedule2", 3845, 3, "Ramen Noodles", 3, "Jane Doe"));
+            scheduleDao.insert(new Schedule("Schedule1", System.currentTimeMillis(), 3, "Advil", 3, "John Doe", 333));
+            scheduleDao.insert(new Schedule("Schedule2", System.currentTimeMillis(), 3, "Ramen Noodles", 3, "Jane Doe", 120));
+
+            consumptionDao.deleteAll();
             return null;
         }
     }

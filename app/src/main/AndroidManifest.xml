@@ -91,10 +91,11 @@
         </activity>
         <activity
             android:name=".NotificationActivity"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@style/MyAlertDialogStyle" />
         <activity
             android:name=".ui.history.HistoryMenu"
             android:label="@string/title_activity_history_menu"
+            android:screenOrientation="landscape"
             android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

@@ -22,8 +22,6 @@ public class UserMenu extends AppCompatActivity {
 
     private static UserViewModel userViewModel;
 
-    public static User selectedUser;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,5 +61,4 @@ public class UserMenu extends AppCompatActivity {
 
         });
     }
-
 }

@@ -3,45 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
-    android:id="@+id/ScheduleRecyclerViewItemLayout">
-
-    <EditText
-        android:id="@+id/ScheduleIcon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:inputType="date"/>
+    android:id="@+id/ConsumptionRecyclerViewItemLayout">
 
     <TextView
-        android:id="@+id/ScheduleText1"
+        android:id="@+id/ConsumptionText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ScheduleIcon"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:text="S Text 1"
+        android:text="User Name"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/ScheduleText2"
+        android:id="@+id/ConsumptionText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ScheduleText1"
+        android:layout_toRightOf="@+id/ConsumptionText1"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:text="S Text 2"
+        android:text="User Name"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
-
     <TextView
-        android:id="@+id/ScheduleText3"
+        android:id="@+id/ConsumptionText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ScheduleText2"
+        android:layout_toRightOf="@+id/ConsumptionText2"
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
-        android:text="S Text 3"
+        android:text="Pill Name"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/ConsumptionText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ConsumptionText3"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="Consumed?"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 

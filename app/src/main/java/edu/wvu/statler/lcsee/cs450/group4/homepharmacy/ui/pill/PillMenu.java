@@ -22,8 +22,6 @@ public class PillMenu extends AppCompatActivity {
 
     private static PillViewModel pillViewModel;
 
-    public static Pill selectedPill;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +55,10 @@ public class PillMenu extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
+                PillEditor.selectedPill = null;
                 startActivity(new Intent(PillMenu.this, PillEditor.class));
             }
+
         });
     }
 }

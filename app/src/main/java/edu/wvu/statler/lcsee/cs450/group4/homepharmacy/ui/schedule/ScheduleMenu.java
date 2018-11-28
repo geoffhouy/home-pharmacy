@@ -22,8 +22,6 @@ public class ScheduleMenu extends AppCompatActivity {
 
     private static ScheduleViewModel scheduleViewModel;
 
-    public static Schedule selectedSchedule;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +55,7 @@ public class ScheduleMenu extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
+                ScheduleEditor.selectedSchedule = null;
                 startActivity(new Intent(ScheduleMenu.this, ScheduleEditor.class));
             }
         });

@@ -25,22 +25,27 @@ public class ScheduleViewModel extends AndroidViewModel {
         return scheduleRepository.selectAll();
     }
 
+    public List<Schedule> getAllSchedulesAsList() {
+        return scheduleRepository.selectAllAsList();
+    }
+
     public Schedule getScheduleByUUID(long uuid) {
         return scheduleRepository.selectByUUID(uuid);
     }
 
-    public void createSchedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
-        Schedule schedule = new Schedule(name, timestamp, numPillsToTake, pillName, dispenserNumber, userName);
+    public void createSchedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName, long interval) {
+        Schedule schedule = new Schedule(name, timestamp, numPillsToTake, pillName, dispenserNumber, userName, interval);
         scheduleRepository.insert(schedule);
     }
 
-    public void editSchedule(Schedule schedule, String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
+    public void editSchedule(Schedule schedule, String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName, long interval) {
         schedule.setName(name);
         schedule.setTimestamp(timestamp);
         schedule.setNumPillsToTake(numPillsToTake);
         schedule.setPillName(pillName);
         schedule.setDispenserNumber(dispenserNumber);
         schedule.setUserName(userName);
+        schedule.setInterval(interval);
         scheduleRepository.update(schedule);
     }
 

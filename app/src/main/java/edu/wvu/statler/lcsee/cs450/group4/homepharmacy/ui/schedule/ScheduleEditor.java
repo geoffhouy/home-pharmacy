@@ -25,13 +25,18 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.viewmodel.ScheduleViewModel;
 
 public class ScheduleEditor extends AppCompatActivity {
+
+    public static Schedule selectedSchedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +126,13 @@ public class ScheduleEditor extends AppCompatActivity {
                     int dispenserNumber = Integer.parseInt(editTextDispenserNumber.getText().toString());
                     String userName = editTextUser.getText().toString();
 
+                    long interval = 0L;
+
+                    // if 8 hours
+                    // + that many milliseconds
+
                     Toast.makeText(getApplicationContext(), "Schedule \"" + scheduleName + "\" saved!", Toast.LENGTH_LONG).show();
-                    scheduleViewModel.createSchedule(scheduleName, timestamp, numPills,pillName, dispenserNumber, userName);
+                    scheduleViewModel.createSchedule(scheduleName, timestamp, numPills,pillName, dispenserNumber, userName, interval);
 
                     //TODO Geoff, Here is where you make the alarm stuff like in main activity
                     Intent intent = new Intent(getApplicationContext(), Notifier.class);
@@ -135,11 +145,11 @@ public class ScheduleEditor extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
                     } else {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, 5000, pendingIntent);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
                     }
 
@@ -152,12 +162,48 @@ public class ScheduleEditor extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
-                // Have to get the schedule to delete
-                // scheduleViewModel.deleteSchedule(schedule);
-
+                if (selectedSchedule != null) {
+                    scheduleViewModel.deleteSchedule(selectedSchedule);
+                    Toast.makeText(getApplicationContext(), "Schedule \"" + selectedSchedule.getName() + "\" deleted!", Toast.LENGTH_LONG).show();
+                    selectedSchedule = null;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Schedule not deleted.", Toast.LENGTH_LONG).show();
+                }
                 finish();
             }
         });
+
+        long uuid = getIncomingIntent();
+        if (uuid != -1) {
+            final Schedule schedule = scheduleViewModel.getScheduleByUUID(uuid);
+            editTextName.setText(schedule.getName());
+
+            myCalendar.setTimeInMillis(schedule.getTimestamp());
+
+            String myFormat = "MM/dd/yy";
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat,Locale.US);
+            dateEdit.setText(sdf.format(myCalendar.getTime()));
+
+            Date datetime = new Date(schedule.getTimestamp());
+            DateFormat formatter = new SimpleDateFormat("HH:mm", Locale.US);
+            formatter.setTimeZone(TimeZone.getTimeZone("EST"));
+            timeEdit.setText(formatter.format(datetime));
+
+            //dateEdit.setText(String.format("%f", schedule.getTimestamp()));
+            //timeEdit.setText(String.format("%f", schedule.getTimestamp()));
+            editTextUser.setText(schedule.getUserName());
+            editTextNumPills.setText(String.format("%d", schedule.getNumPillsToTake()));
+            editTextDispenserNumber.setText(String.format("%d", schedule.getDispenserNumber()));
+            editTextPillName.setText(schedule.getPillName());
+            selectedSchedule = schedule;
+        }
+    }
+
+    private long getIncomingIntent() {
+        if (getIntent().hasExtra("uuid")) {
+            return getIntent().getLongExtra("uuid", -1);
+        } else {
+            return -1;
+        }
     }
 }

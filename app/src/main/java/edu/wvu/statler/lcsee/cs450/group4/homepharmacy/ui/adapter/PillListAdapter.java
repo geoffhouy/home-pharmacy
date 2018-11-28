@@ -18,6 +18,7 @@ import java.util.List;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Pill;
+import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillEditor;
 
 public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillViewHolder> {
 
@@ -49,6 +50,10 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, current.getName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, PillEditor.class);
+                intent.putExtra("uuid", current.uuid);
+                context.startActivity(intent);
             }
         });
     }

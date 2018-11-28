@@ -59,6 +59,9 @@ public interface ScheduleDao {
     @Query("SELECT * FROM " + Schedule.TABLE_NAME)
     LiveData<List<Schedule>> selectAll();
 
+    @Query("SELECT * FROM " + Schedule.TABLE_NAME)
+    List<Schedule> selectAllAsList();
+
     /**
      * Selects a Schedule by UUID.
      *

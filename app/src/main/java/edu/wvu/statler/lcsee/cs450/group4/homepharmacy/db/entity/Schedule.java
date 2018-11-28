@@ -34,13 +34,17 @@ public class Schedule {
     @ColumnInfo(name = "user_name")
     private String userName;
 
-    public Schedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName) {
+    @ColumnInfo(name = "interval")
+    private long interval;
+
+    public Schedule(String name, long timestamp, int numPillsToTake, String pillName, int dispenserNumber, String userName, long interval) {
         this.name = name;
         this.timestamp = timestamp;
         this.numPillsToTake = numPillsToTake;
         this.pillName = pillName;
         this.dispenserNumber = dispenserNumber;
         this.userName = userName;
+        this.interval = interval;
     }
 
     public String getName() {
@@ -89,6 +93,14 @@ public class Schedule {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public long getInterval() {
+        return interval;
+    }
+
+    public void setInterval(long interval) {
+        this.interval = interval;
     }
 
 }
