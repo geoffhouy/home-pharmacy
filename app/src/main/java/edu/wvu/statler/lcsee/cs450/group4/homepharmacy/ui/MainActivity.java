@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
+                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
                     } else {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
+                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
                     }
                     //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
