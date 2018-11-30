@@ -94,7 +94,7 @@ public class ConsumptionListAdapter extends RecyclerView.Adapter<ConsumptionList
         private final TextView consumptionText2;
         private final TextView consumptionText3;
         private final TextView consumptionText4;
-        private final RelativeLayout relativeLayout;
+        //private final RelativeLayout relativeLayout;
 
         private ConsumptionViewHolder(View view) {
             super(view);
@@ -102,7 +102,7 @@ public class ConsumptionListAdapter extends RecyclerView.Adapter<ConsumptionList
             consumptionText2 = view.findViewById(R.id.ConsumptionText2);
             consumptionText3 = view.findViewById(R.id.ConsumptionText3);
             consumptionText4 = view.findViewById(R.id.ConsumptionText4);
-            relativeLayout = view.findViewById(R.id.ConsumptionRecyclerViewItemLayout);
+            //relativeLayout = view.findViewById(R.id.ConsumptionRecyclerViewItemLayout);
         }
 
     }
