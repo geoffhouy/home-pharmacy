@@ -7,6 +7,10 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.things.pio.Gpio;
+import com.google.android.things.pio.PeripheralManager;
+
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -113,5 +118,60 @@ public class Notifier extends BroadcastReceiver {
                 connection.disconnect();
             }
         }
+    }
+
+    public static void LED(int num, boolean on){
+        PeripheralManager manager = PeripheralManager.getInstance();
+        Gpio gpio = null;
+        try {
+            switch (num) {
+                case 1:
+                    gpio = manager.openGpio("BCM4");
+                case 2:
+                    gpio = manager.openGpio("BCM17");
+                case 3:
+                    gpio = manager.openGpio("BCM27");
+                case 4:
+                    gpio = manager.openGpio("BCM22");
+                case 5:
+                    gpio = manager.openGpio("BCM23");
+                case 6:
+                    gpio = manager.openGpio("BCM24");
+                case 7:
+                    gpio = manager.openGpio("BCM25");
+                case 8:
+                    gpio = manager.openGpio("BCM5");
+                case 9:
+                    gpio = manager.openGpio("BCM6");
+                case 10:
+                    gpio = manager.openGpio("BCM12");
+
+            }
+
+            if (on) {
+
+
+                // Initialize the pin as a low output
+                gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
+                // high voltage is considered active
+                gpio.setActiveType(Gpio.ACTIVE_HIGH);
+
+                // Toggle the value to be LOW
+                gpio.setValue(true);
+            }
+            else{
+                // Initialize the pin as a low output
+                gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
+                // high voltage is considered active
+                gpio.setActiveType(Gpio.ACTIVE_HIGH);
+
+                // Toggle the value to be LOW
+                gpio.setValue(false);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
