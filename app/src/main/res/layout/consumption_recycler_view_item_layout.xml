@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
+    android:orientation="vertical"
     android:id="@+id/ConsumptionRecyclerViewItemLayout">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/ScheduleIcon"
+        android:src="@drawable/ic_working_schedule"/>
 
     <TextView
         android:id="@+id/ConsumptionText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
         android:text="User Name"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
@@ -19,9 +24,6 @@
         android:id="@+id/ConsumptionText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ConsumptionText1"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
         android:text="User Name"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
@@ -30,9 +32,6 @@
         android:id="@+id/ConsumptionText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ConsumptionText2"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
         android:text="Pill Name"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
@@ -41,11 +40,8 @@
         android:id="@+id/ConsumptionText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ConsumptionText3"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
         android:text="Consumed?"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
-</RelativeLayout>
+</LinearLayout>

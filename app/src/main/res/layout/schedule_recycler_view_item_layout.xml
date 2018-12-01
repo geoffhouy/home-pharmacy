@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
+    android:orientation="vertical"
     android:id="@+id/ScheduleRecyclerViewItemLayout">
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/ScheduleIcon"
-        android:src="@drawable/ic_perm_contact_calendar_black_24dp"/>
+        android:src="@drawable/ic_schedule"/>
 
     <TextView
         android:id="@+id/ScheduleText1"
@@ -45,4 +46,4 @@
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
-</RelativeLayout>
+</LinearLayout>

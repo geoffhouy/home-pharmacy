@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,11 +42,11 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void onBindViewHolder(@NonNull ScheduleViewHolder scheduleViewHolder, int position) {
         final Schedule current = schedules.get(position);
 
-        scheduleViewHolder.scheduleText1.setText(current.getName());
-        scheduleViewHolder.scheduleText2.setText(current.getPillName());
-        scheduleViewHolder.scheduleText3.setText(String.format("%d", current.getDispenserNumber()));
+        scheduleViewHolder.scheduleText1.setText(Html.fromHtml("<b>Schedule Name: </b>")+current.getName());
+        scheduleViewHolder.scheduleText2.setText(Html.fromHtml("<b>Pill Name: </b>")+current.getPillName());
+        scheduleViewHolder.scheduleText3.setText(Html.fromHtml("<b>Dispenser: </b>")+String.format("%d", current.getDispenserNumber()));
 
-        scheduleViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        scheduleViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, current.getName(), Toast.LENGTH_SHORT).show();
@@ -76,14 +78,14 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         private final TextView scheduleText1;
         private final TextView scheduleText2;
         private final TextView scheduleText3;
-        private final RelativeLayout relativeLayout;
+        private final LinearLayout layout;
 
         private ScheduleViewHolder(View view) {
             super(view);
             scheduleText1 = view.findViewById(R.id.ScheduleText1);
             scheduleText2 = view.findViewById(R.id.ScheduleText2);
             scheduleText3 = view.findViewById(R.id.ScheduleText3);
-            relativeLayout = view.findViewById(R.id.ScheduleRecyclerViewItemLayout);
+            layout = view.findViewById(R.id.ScheduleRecyclerViewItemLayout);
         }
 
     }

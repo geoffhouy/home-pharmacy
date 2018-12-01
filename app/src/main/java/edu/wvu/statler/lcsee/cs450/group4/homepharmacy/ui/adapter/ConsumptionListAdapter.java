@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,14 +53,15 @@ public class ConsumptionListAdapter extends RecyclerView.Adapter<ConsumptionList
         final Calendar myCalendar = Calendar.getInstance();
         myCalendar.setTimeInMillis(current.getTimestamp());
 
-        String myFormat = "MM/dd/yy   HH:mm:ss";
+        String myFormat = "MM/dd/yy   hh:mm:ss";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat,Locale.US);
         sdf.setTimeZone(TimeZone.getTimeZone("EST"));
 
-        consumptionViewHolder.consumptionText1.setText(sdf.format(myCalendar.getTime()));
-        consumptionViewHolder.consumptionText2.setText(current.getUserName());
-        consumptionViewHolder.consumptionText3.setText(current.getPillName());
-        consumptionViewHolder.consumptionText4.setText(current.isConsumed() ? "Yes" : "No");
+        //TODO Change the time to time and date with 2 seperate stuff
+        consumptionViewHolder.consumptionText1.setText(Html.fromHtml("<b>Time: </b>")+sdf.format(myCalendar.getTime()));
+        consumptionViewHolder.consumptionText2.setText(Html.fromHtml("<b>User: </b>")+current.getUserName());
+        consumptionViewHolder.consumptionText3.setText(Html.fromHtml("<b>Pill Name: </b>")+current.getPillName());
+        consumptionViewHolder.consumptionText4.setText(Html.fromHtml("<b>Was pill taken?: </b>")+(current.isConsumed() ? "Yes" : "No"));
 		/*
         userViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +96,7 @@ public class ConsumptionListAdapter extends RecyclerView.Adapter<ConsumptionList
         private final TextView consumptionText2;
         private final TextView consumptionText3;
         private final TextView consumptionText4;
-        private final RelativeLayout relativeLayout;
+        //private final RelativeLayout relativeLayout;
 
         private ConsumptionViewHolder(View view) {
             super(view);
@@ -102,7 +104,7 @@ public class ConsumptionListAdapter extends RecyclerView.Adapter<ConsumptionList
             consumptionText2 = view.findViewById(R.id.ConsumptionText2);
             consumptionText3 = view.findViewById(R.id.ConsumptionText3);
             consumptionText4 = view.findViewById(R.id.ConsumptionText4);
-            relativeLayout = view.findViewById(R.id.ConsumptionRecyclerViewItemLayout);
+            //relativeLayout = view.findViewById(R.id.ConsumptionRecyclerViewItemLayout);
         }
 
     }

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -35,8 +37,11 @@ public class PillMenu extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.PillInformation);
         final PillListAdapter pillListAdapter = new PillListAdapter(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
         recyclerView.setAdapter(pillListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         pillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
 
