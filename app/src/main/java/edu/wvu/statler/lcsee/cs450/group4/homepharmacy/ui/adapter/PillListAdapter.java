@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +47,7 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
         pillViewHolder.pillText2.setText(current.getDescription());
         pillViewHolder.pillText3.setText(String.format("%d", current.getDispenserNumber()));
 
-        pillViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        pillViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, current.getName(), Toast.LENGTH_SHORT).show();
@@ -77,14 +78,14 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
         private final TextView pillText1;
         private final TextView pillText2;
         private final TextView pillText3;
-        private final RelativeLayout relativeLayout;
+        private final LinearLayout layout;
 
         private PillViewHolder(View view) {
             super(view);
             pillText1 = view.findViewById(R.id.PillText1);
             pillText2 = view.findViewById(R.id.PillText2);
             pillText3 = view.findViewById(R.id.PillText3);
-            relativeLayout = view.findViewById(R.id.PillRecyclerViewItemLayout);
+            layout = view.findViewById(R.id.PillRecyclerViewItemLayout);
         }
 
     }

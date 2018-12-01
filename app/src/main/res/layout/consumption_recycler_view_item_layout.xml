@@ -6,6 +6,12 @@
     android:orientation="vertical"
     android:id="@+id/ConsumptionRecyclerViewItemLayout">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/ScheduleIcon"
+        android:src="@drawable/ic_working_schedule"/>
+
     <TextView
         android:id="@+id/ConsumptionText1"
         android:layout_width="wrap_content"

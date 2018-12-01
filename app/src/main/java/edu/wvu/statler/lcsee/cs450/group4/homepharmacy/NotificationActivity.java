@@ -1,6 +1,5 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
@@ -65,6 +64,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         final AlertDialog dialog = alertDialog.create();
         //alertDialog.create().show();
+        alertDialog.setIcon(R.drawable.ic_notification);
         dialog.setTitle("Take Pill: "+extra.getString("PillName"));
         //dialog.setTitle("Take Pill:");
         dialog.setMessage("Did you take the pill?");

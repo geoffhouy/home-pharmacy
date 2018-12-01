@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
         userViewHolder.userText1.setText(current.getName());
         userViewHolder.userText2.setText(current.getPin());
 
-        userViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        userViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, current.getName(), Toast.LENGTH_SHORT).show();
@@ -75,13 +76,13 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
 
         private final TextView userText1;
         private final TextView userText2;
-        private final RelativeLayout relativeLayout;
+        private final LinearLayout layout;
 
         private UserViewHolder(View view) {
             super(view);
             userText1 = view.findViewById(R.id.UserText1);
             userText2 = view.findViewById(R.id.UserText2);
-            relativeLayout = view.findViewById(R.id.UserRecyclerViewItemLayout);
+            layout = view.findViewById(R.id.UserRecyclerViewItemLayout);
         }
 
     }

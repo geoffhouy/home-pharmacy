@@ -81,11 +81,13 @@ public class MainActivity extends AppCompatActivity {
 //        });
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //TODO This still runs every time activity is opened, i can't think of a fix to this so im just going to comment it for now
+        /*
         if(firstRun){
             firstRun = false;
             final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
 
-            //TODO schedule is apparently always null so we need to fix that
             List<Schedule> schedules = scheduleViewModel.getAllSchedulesAsList();
 
             AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
@@ -104,19 +106,19 @@ public class MainActivity extends AppCompatActivity {
                     myIntent.putExtra("UserName", schedule.getUserName());
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
+                        //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+                        //manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
                     } else {
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
+                        //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+                        //manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
                     }
                     //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
                     //Log.d(TAG, "onCreate: ");
                 }
             }
-        }
+        }*/
     }
 
     @Override
