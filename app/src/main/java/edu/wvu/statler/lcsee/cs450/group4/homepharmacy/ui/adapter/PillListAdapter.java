@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +44,9 @@ public class PillListAdapter extends RecyclerView.Adapter<PillListAdapter.PillVi
     public void onBindViewHolder(@NonNull PillViewHolder pillViewHolder, int position) {
         final Pill current = pills.get(position);
 
-        pillViewHolder.pillText1.setText(current.getName());
-        pillViewHolder.pillText2.setText(current.getDescription());
-        pillViewHolder.pillText3.setText(String.format("%d", current.getDispenserNumber()));
+        pillViewHolder.pillText1.setText(Html.fromHtml("<b>Pill Name: </b>")+current.getName());
+        pillViewHolder.pillText2.setText(Html.fromHtml("<b>Pill Description: </b>")+current.getDescription());
+        pillViewHolder.pillText3.setText(Html.fromHtml("<b>Dispenser Number: </b>")+String.format("%d", current.getDispenserNumber()));
 
         pillViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

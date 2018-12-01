@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,7 +28,23 @@ public class NotificationActivity extends AppCompatActivity {
 //        alertDialog.setIcon(R.drawable.ic_launcher_foreground);
         final Intent intent = getIntent();
         final Bundle extra = intent.getExtras();
-        System.out.println(extra);
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.setLooping(true);
+        r.play();
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try{
+//                    wait(10000);
+//                    r.stop();
+//                }catch(Exception e){
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+
         Log.d(TAG, "PROGRESS: Getting to notification Activity");
         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
@@ -38,6 +57,7 @@ public class NotificationActivity extends AppCompatActivity {
                         extra.getString("PillName"),
                         extra.getString("UserName"),
                         true);
+                r.stop();
             }
         });
         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -51,6 +71,7 @@ public class NotificationActivity extends AppCompatActivity {
                         extra.getString("PillName"),
                         extra.getString("UserName"),
                         false);
+                r.stop();
             }
         });
 //        alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL, "Yes",
@@ -63,6 +84,7 @@ public class NotificationActivity extends AppCompatActivity {
 //                });
 
         final AlertDialog dialog = alertDialog.create();
+        dialog.setCanceledOnTouchOutside(false);
         //alertDialog.create().show();
         alertDialog.setIcon(R.drawable.ic_notification);
         dialog.setTitle("Take Pill: "+extra.getString("PillName"));

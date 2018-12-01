@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +43,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserVi
     public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int position) {
         final User current = users.get(position);
 
-        userViewHolder.userText1.setText(current.getName());
-        userViewHolder.userText2.setText(current.getPin());
+        userViewHolder.userText1.setText(Html.fromHtml("<b>Name: </b>")+current.getName());
+        userViewHolder.userText2.setText(Html.fromHtml("<b>User Pin: </b>")+current.getPin());
 
         userViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

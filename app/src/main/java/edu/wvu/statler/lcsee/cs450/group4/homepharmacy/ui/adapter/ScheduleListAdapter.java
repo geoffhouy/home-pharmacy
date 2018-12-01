@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,9 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void onBindViewHolder(@NonNull ScheduleViewHolder scheduleViewHolder, int position) {
         final Schedule current = schedules.get(position);
 
-        scheduleViewHolder.scheduleText1.setText(current.getName());
-        scheduleViewHolder.scheduleText2.setText(current.getPillName());
-        scheduleViewHolder.scheduleText3.setText(String.format("%d", current.getDispenserNumber()));
+        scheduleViewHolder.scheduleText1.setText(Html.fromHtml("<b>Schedule Name: </b>")+current.getName());
+        scheduleViewHolder.scheduleText2.setText(Html.fromHtml("<b>Pill Name: </b>")+current.getPillName());
+        scheduleViewHolder.scheduleText3.setText(Html.fromHtml("<b>Dispenser: </b>")+String.format("%d", current.getDispenserNumber()));
 
         scheduleViewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,12 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.wvu.statler.lcsee.cs450.group4.homepharmacy">
 
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!--<uses-permission android:name="com.android.alarm.permission.SET_ALARM" />-->
+    <!--<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+
+    <!--<uses-permission-->
+        <!--android:required="true"-->
+        <!--android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
+    <!--<uses-permission-->
+        <!--android:required="true"-->
+        <!--android:name="android.permission.ACCESS_WIFI_STATE"/>-->
+    <!--<uses-permission-->
+        <!--android:required="true"-->
+        <!--android:name="android.permission.CHANGE_WIFI_STATE"/>-->
+    <!--<uses-permission-->
+        <!--android:required="true"-->
+        <!--android:name="android.permission.INTERNET"/>-->
+
+    <!--<uses-permission android:name="android.permission.BLUETOOTH"/>-->
+    <!--<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>-->
 
     <application
         android:allowBackup="true"

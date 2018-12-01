@@ -3,8 +3,13 @@ package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.arch.lifecycle.ViewModelProviders;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +35,10 @@ import static android.content.ContentValues.TAG;
 public class MainActivity extends AppCompatActivity {
 
     private boolean firstRun = true;
+    WifiP2pManager mManager;
+    WifiP2pManager.Channel mChannel;
+    BroadcastReceiver mReceiver;
+    BluetoothAdapter mBluetoothAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +73,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,HistoryMenu.class));
             }
         });
+
+//        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//        if (mBluetoothAdapter == null) {
+//            // Device doesn't support Bluetooth
+//            Log.d(TAG, "PROGRESS: Device doesn't have bluetooth");
+//        }else{
+//            if (!mBluetoothAdapter.isEnabled()) {
+//                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//                startActivityForResult(enableBtIntent, 1);
+//            }
+//        }
+
 //        findViewById(R.id.TestButton).setOnClickListener(new View.OnClickListener(){
 //
 //            @Override
@@ -79,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
 //                alertDialog.show();
 //            }
 //        });
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         //TODO This still runs every time activity is opened, i can't think of a fix to this so im just going to comment it for now
         /*
