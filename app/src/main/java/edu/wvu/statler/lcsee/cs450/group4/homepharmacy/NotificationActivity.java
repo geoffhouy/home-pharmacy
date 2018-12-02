@@ -42,8 +42,9 @@ public class NotificationActivity extends AppCompatActivity {
         final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
         r.setLooping(true);
         r.play();
-        SelectLED(9);
+        SelectLED(extra.getInt("DispenserNumber"));
         SwitchLED(true);
+        
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -110,34 +111,44 @@ public class NotificationActivity extends AppCompatActivity {
             switch (num) {
                 case 1:
                     gpio = manager.openGpio("BCM4");
-                    Log.d("Light","BCM4");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 2:
                     gpio = manager.openGpio("BCM17");
-                    Log.d("Light","BCM17");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 3:
                     gpio = manager.openGpio("BCM27");
-                    Log.d("Light","BCM27");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 4:
                     gpio = manager.openGpio("BCM22");
-                    Log.d("Light","BCM22");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 5:
                     gpio = manager.openGpio("BCM23");
-                    Log.d("Light","BCM23");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 6:
                     gpio = manager.openGpio("BCM24");
-                    Log.d("Light","BCM24");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 7:
                     gpio = manager.openGpio("BCM25");
-                    Log.d("Light","BCM25");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 8:
                     gpio = manager.openGpio("BCM5");
-                    Log.d("Light","BCM5");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 9:
                     gpio = manager.openGpio("BCM6");
-                    Log.d("Light","BCM6");
+                    Log.d("Light",gpio.getName());
+                    return;
                 case 10:
                     gpio = manager.openGpio("BCM12");
-                    Log.d("Light","BCM12");
+                    Log.d("Light",gpio.getName());
+                    return;
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -147,11 +158,13 @@ public class NotificationActivity extends AppCompatActivity {
         try{
             if(on){
                 gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
+                gpio.setActiveType(Gpio.ACTIVE_HIGH);
                 gpio.setValue(true);
                 Log.d("Light",gpio.getName()+" state: "+gpio.getValue());
             }else{
                 Log.d("Light","Close "+gpio.getName());
-                //gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
+                gpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
+                gpio.setActiveType(Gpio.ACTIVE_HIGH);
                 gpio.setValue(false);
                 Log.d("Light",gpio.getName()+" state: "+gpio.getValue());
                 gpio.close();
