@@ -24,7 +24,7 @@
     <Button
         android:id="@+id/SchedulesButton"
         android:layout_width="366dp"
-        android:layout_height="74dp"
+        android:layout_height="58dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/PillsButton"
         android:layout_width="368dp"
-        android:layout_height="69dp"
+        android:layout_height="58dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/UsersButton"
         android:layout_width="368dp"
-        android:layout_height="66dp"
+        android:layout_height="58dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
@@ -60,13 +60,12 @@
     <Button
         android:id="@+id/HistoryButton"
         android:layout_width="368dp"
-        android:layout_height="66dp"
+        android:layout_height="58dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
         android:text="History"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UsersButton" />
 

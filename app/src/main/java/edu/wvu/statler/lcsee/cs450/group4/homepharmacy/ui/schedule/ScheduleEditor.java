@@ -1,11 +1,13 @@
 package edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,8 +27,10 @@ import org.w3c.dom.Text;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -67,6 +72,22 @@ public class ScheduleEditor extends AppCompatActivity {
                 new DatePickerDialog(ScheduleEditor.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        final TextInputEditText intervalEdit = (TextInputEditText) findViewById(R.id.ScheduleEditorInterval);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final String[] intervals = new String[]{"Every 8 Hours","Every 12 Hours","Every 24 Hours","Every 48 Hours"};
+        builder.setSingleChoiceItems(intervals,-1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                intervalEdit.setText(intervals[i]);
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog mDialog = builder.create();
+        mDialog.show();
+
+        //final List<String> intervalsList = Arrays.asList(intervals);
+        //builder.setMultiChoiceItems(intervalsList);
 
         final TextInputEditText timeEdit = (TextInputEditText) findViewById(R.id.ScheduleEditorTimeInput);
         final TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
@@ -130,6 +151,15 @@ public class ScheduleEditor extends AppCompatActivity {
 
                     // if 8 hours
                     // + that many milliseconds
+                    if(intervalEdit.getText().equals("Every 8 Hours")){
+                        interval =  28800000;
+                    }else if(intervalEdit.getText().equals("Every 12 Hours")){
+                        interval =  43200000;
+                    }else if(intervalEdit.getText().equals("Every 24 Hours")){
+                        interval =  86400000;
+                    }else{
+                        interval =  172800000;
+                    }
 
                     Toast.makeText(getApplicationContext(), "Schedule \"" + scheduleName + "\" saved!", Toast.LENGTH_LONG).show();
                     scheduleViewModel.createSchedule(scheduleName, timestamp, numPills,pillName, dispenserNumber, userName, interval);

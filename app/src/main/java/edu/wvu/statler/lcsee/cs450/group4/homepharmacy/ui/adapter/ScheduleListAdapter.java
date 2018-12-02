@@ -13,8 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.R;
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.db.entity.Schedule;
@@ -42,7 +46,27 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
     public void onBindViewHolder(@NonNull ScheduleViewHolder scheduleViewHolder, int position) {
         final Schedule current = schedules.get(position);
 
+        final Calendar myCalendar = Calendar.getInstance();
+        myCalendar.setTimeInMillis(current.getTimestamp());
+
+        String myFormat = "MM/dd/yy   hh:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat,Locale.US);
+        sdf.setTimeZone(TimeZone.getTimeZone("EST"));
+
+        String interval = "";
+        if(current.getInterval()==28800000){
+            interval = "every 8 Hours";
+        }else if(current.getInterval()==43200000) {
+            interval = "every 12 hours";
+        }else if(current.getInterval()==86400000){
+            interval = "every 24 hours";
+        }else if(current.getInterval()==172800000){
+            interval = "every 48 hours";
+        }
+
         scheduleViewHolder.scheduleText1.setText(Html.fromHtml("<b>Schedule Name: </b>")+current.getName());
+        scheduleViewHolder.scheduleText4.setText(Html.fromHtml("<b>Schedule date/time: </b>")+sdf.format(myCalendar.getTime()));
+        scheduleViewHolder.scheduleText5.setText(Html.fromHtml("<b>Interval: </b>")+interval);
         scheduleViewHolder.scheduleText2.setText(Html.fromHtml("<b>Pill Name: </b>")+current.getPillName());
         scheduleViewHolder.scheduleText3.setText(Html.fromHtml("<b>Dispenser: </b>")+String.format("%d", current.getDispenserNumber()));
 
@@ -78,6 +102,8 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
         private final TextView scheduleText1;
         private final TextView scheduleText2;
         private final TextView scheduleText3;
+        private final TextView scheduleText4;
+        private final TextView scheduleText5;
         private final LinearLayout layout;
 
         private ScheduleViewHolder(View view) {
@@ -85,6 +111,8 @@ public class ScheduleListAdapter extends RecyclerView.Adapter<ScheduleListAdapte
             scheduleText1 = view.findViewById(R.id.ScheduleText1);
             scheduleText2 = view.findViewById(R.id.ScheduleText2);
             scheduleText3 = view.findViewById(R.id.ScheduleText3);
+            scheduleText4 = view.findViewById(R.id.ScheduleText4);
+            scheduleText5 = view.findViewById(R.id.ScheduleText5);
             layout = view.findViewById(R.id.ScheduleRecyclerViewItemLayout);
         }
 
