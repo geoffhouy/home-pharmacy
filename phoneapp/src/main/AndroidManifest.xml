@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.wvu.statler.lcsee.cs450.group4.homepharmacy">
+
+    <uses-permission android:name="com.google.android.things.permission.USE_PERIPHERAL_IO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <receiver android:name=".Notifier" />
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.NewUserActivity" />
+        <activity
+            android:name=".ui.schedule.ScheduleMenu"
+            android:label="@string/title_activity_schedule_menu"
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.schedule.ScheduleEditor"
+            android:label="@string/title_activity_schedule_editor"
+            android:parentActivityName=".ui.schedule.ScheduleMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.schedule.ScheduleMenu" />
+        </activity>
+        <activity
+            android:name=".ui.pill.PillMenu"
+            android:label="@string/title_activity_pill_menu"
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.pill.PillEditor"
+            android:label="@string/title_activity_pill_editor"
+            android:parentActivityName=".ui.pill.PillMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.pill.PillMenu" />
+        </activity>
+        <activity
+            android:name=".ui.user.UserMenu"
+            android:label="@string/title_activity_user_menu"
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.user.UserEditor"
+            android:label="@string/title_activity_user_editor"
+            android:parentActivityName=".ui.user.UserMenu"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.user.UserMenu" />
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:theme="@style/MyAlertDialogStyle" />
+        <activity
+            android:name=".ui.history.HistoryMenu"
+            android:label="@string/title_activity_history_menu"
+            android:screenOrientation="landscape"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.wvu.statler.lcsee.cs450.group4.homepharmacy.ui.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

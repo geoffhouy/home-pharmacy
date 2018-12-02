@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:id="@+id/PillRecyclerViewItemLayout">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/PillIcon"
+        android:src="@drawable/ic_pill"/>
+
+    <TextView
+        android:id="@+id/PillText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/PillIcon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="PillText1"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/PillText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/PillText1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="PillText2"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/PillText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/PillText2"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text="PillText3"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
+
+</LinearLayout>
