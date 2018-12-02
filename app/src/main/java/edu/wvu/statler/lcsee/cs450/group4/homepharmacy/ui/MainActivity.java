@@ -18,7 +18,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
 
 import edu.wvu.statler.lcsee.cs450.group4.homepharmacy.Notifier;
@@ -102,42 +104,42 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         //TODO This still runs every time activity is opened, i can't think of a fix to this so im just going to comment it for now
-        /*
-        if(firstRun){
-            firstRun = false;
-            final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
 
-            List<Schedule> schedules = scheduleViewModel.getAllSchedulesAsList();
-
-            AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-            Log.d(TAG, "PROGRESS: Getting to if");
-            if (schedules != null && schedules.size() > 0) {
-                for (Schedule schedule : schedules) {
-
-                    Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
-                    //putExtras are going to be used to push the information of the pill and the user to the notifcation itself
-                    //name is the name of the field and the value is what we want to actually send
-                    Log.d(TAG, "PROGRESS: Making Schedules");
-                    myIntent.putExtra("ScheduleName", schedule.getName());
-                    myIntent.putExtra("PillName", schedule.getPillName());
-                    myIntent.putExtra("NumPills", schedule.getNumPillsToTake());
-                    myIntent.putExtra("DispenserNumber", schedule.getDispenserNumber());
-                    myIntent.putExtra("UserName", schedule.getUserName());
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
-                        //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        //manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
-                        //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
-                    } else {
-                        //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
-                        //manager.setRepeating(manager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 5000000000L, pendingIntent);
-                        //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
-                    }
-                    //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
-                    //Log.d(TAG, "onCreate: ");
-                }
-            }
-        }*/
+//        if(firstRun){
+//            firstRun = false;
+//            final ScheduleViewModel scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
+//
+//            List<Schedule> schedules = scheduleViewModel.getAllSchedulesAsList();
+//
+//            AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+//            Log.d(TAG, "PROGRESS: Getting to if");
+//            if (schedules != null && schedules.size() > 0) {
+//                for (Schedule schedule : schedules) {
+//
+//                    Intent myIntent = new Intent(getApplicationContext(), Notifier.class);
+//                    //putExtras are going to be used to push the information of the pill and the user to the notifcation itself
+//                    //name is the name of the field and the value is what we want to actually send
+//                    Log.d(TAG, "PROGRESS: Making Schedules");
+//                    myIntent.putExtra("ScheduleName", schedule.getName());
+//                    myIntent.putExtra("PillName", schedule.getPillName());
+//                    myIntent.putExtra("NumPills", schedule.getNumPillsToTake());
+//                    myIntent.putExtra("DispenserNumber", schedule.getDispenserNumber());
+//                    myIntent.putExtra("UserName", schedule.getUserName());
+//
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+//                        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+//                        manager.setRepeating(manager.RTC_WAKEUP, schedule.getTimestamp(), schedule.getInterval(), pendingIntent);
+//                        Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+//                        manager.setRepeating(manager.RTC_WAKEUP, schedule.getTimestamp(), schedule.getInterval(), pendingIntent);
+//                        Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
+//                    }
+//                    //manager.set(AlarmManager.RTC_WAKEUP,Calendar.getInstance().getTime().getTime()+20, pendingIntent);
+//                    Log.d(TAG, "onCreate: ");
+//                }
+//            }
+//        }
     }
 
     @Override

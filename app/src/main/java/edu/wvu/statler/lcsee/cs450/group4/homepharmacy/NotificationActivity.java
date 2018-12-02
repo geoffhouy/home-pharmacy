@@ -44,7 +44,7 @@ public class NotificationActivity extends AppCompatActivity {
         r.play();
         SelectLED(extra.getInt("DispenserNumber"));
         SwitchLED(true);
-        
+
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
