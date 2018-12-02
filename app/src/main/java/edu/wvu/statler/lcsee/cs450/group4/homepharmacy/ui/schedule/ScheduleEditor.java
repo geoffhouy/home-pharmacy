@@ -74,7 +74,7 @@ public class ScheduleEditor extends AppCompatActivity {
         });
 
         final TextInputEditText intervalEdit = (TextInputEditText) findViewById(R.id.ScheduleEditorInterval);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final String[] intervals = new String[]{"Every 8 Hours","Every 12 Hours","Every 24 Hours","Every 48 Hours"};
         builder.setSingleChoiceItems(intervals,-1, new DialogInterface.OnClickListener() {
             @Override
@@ -83,11 +83,12 @@ public class ScheduleEditor extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-        AlertDialog mDialog = builder.create();
-        mDialog.show();
-
-        //final List<String> intervalsList = Arrays.asList(intervals);
-        //builder.setMultiChoiceItems(intervalsList);
+        intervalEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.create().show();
+            }
+        });
 
         final TextInputEditText timeEdit = (TextInputEditText) findViewById(R.id.ScheduleEditorTimeInput);
         final TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
@@ -175,11 +176,11 @@ public class ScheduleEditor extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, myCalendar.getTimeInMillis(), interval, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set1",Toast.LENGTH_SHORT).show();
                     } else {
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, System.currentTimeMillis() + 6000, 50000000, pendingIntent);
+                        alarmManager.setRepeating(alarmManager.RTC_WAKEUP, myCalendar.getTimeInMillis(), interval, pendingIntent);
                         //Toast.makeText(MainActivity.this,"Alarm set2",Toast.LENGTH_SHORT).show();
                     }
 

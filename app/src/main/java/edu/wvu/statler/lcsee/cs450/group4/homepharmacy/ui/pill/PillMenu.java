@@ -38,10 +38,10 @@ public class PillMenu extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.PillInformation);
         final PillListAdapter pillListAdapter = new PillListAdapter(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
         recyclerView.setAdapter(pillListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         pillViewModel = ViewModelProviders.of(this).get(PillViewModel.class);
 

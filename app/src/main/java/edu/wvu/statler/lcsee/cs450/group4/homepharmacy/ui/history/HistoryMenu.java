@@ -44,10 +44,10 @@ public class HistoryMenu extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.HistoryInformation);
         final ConsumptionListAdapter consumptionListAdapter = new ConsumptionListAdapter(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
         recyclerView.setAdapter(consumptionListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         consumptionViewModel = ViewModelProviders.of(this).get(ConsumptionViewModel.class);
 

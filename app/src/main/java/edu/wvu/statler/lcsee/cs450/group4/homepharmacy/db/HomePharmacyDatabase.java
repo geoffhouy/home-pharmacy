@@ -105,8 +105,8 @@ public abstract class HomePharmacyDatabase extends RoomDatabase {
             pillDao.insert(new Pill("Ramen Noodles", "Not a pill", 42, 6, 4));
 
             scheduleDao.deleteAll();
-            scheduleDao.insert(new Schedule("Schedule1", System.currentTimeMillis(), 3, "Advil", 3, "John Doe", 333));
-            scheduleDao.insert(new Schedule("Schedule2", System.currentTimeMillis(), 3, "Ramen Noodles", 3, "Jane Doe", 120));
+            scheduleDao.insert(new Schedule("Schedule1", System.currentTimeMillis(), 3, "Advil", 3, "John Doe", 28800000));
+            scheduleDao.insert(new Schedule("Schedule2", System.currentTimeMillis(), 3, "Ramen Noodles", 3, "Jane Doe", 28800000));
 
             consumptionDao.deleteAll();
             return null;

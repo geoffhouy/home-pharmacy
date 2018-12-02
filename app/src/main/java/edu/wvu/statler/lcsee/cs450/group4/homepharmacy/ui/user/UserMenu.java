@@ -38,10 +38,10 @@ public class UserMenu extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.UserInformation);
         final UserListAdapter userListAdapter = new UserListAdapter(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
         recyclerView.setAdapter(userListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 

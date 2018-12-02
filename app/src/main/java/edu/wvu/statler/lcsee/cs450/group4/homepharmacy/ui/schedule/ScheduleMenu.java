@@ -38,10 +38,10 @@ public class ScheduleMenu extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.ScheduleInformation);
         final ScheduleListAdapter scheduleListAdapter = new ScheduleListAdapter(this);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL));
         recyclerView.setAdapter(scheduleListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel.class);
 
