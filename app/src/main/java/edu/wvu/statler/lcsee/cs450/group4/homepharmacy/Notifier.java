@@ -48,8 +48,7 @@ public class Notifier extends BroadcastReceiver {
         notificationIntent.putExtras(intent);
         context.startActivity(notificationIntent);
         c = context;
-        //TODO
-        //notifyAlexa("Take Pill "+intent.getExtras().getString("PillName"));
+        notifyAlexa("Take Pill "+intent.getExtras().getString("PillName"));
 
         Bundle extra = intent.getExtras();
         Log.d(TAG, "PROGRESS: Getting to notifier" + extra.getString("PillName"));

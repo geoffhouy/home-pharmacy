@@ -101,9 +101,9 @@ public class NotificationActivity extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(false);
         //alertDialog.create().show();
         alertDialog.setIcon(R.drawable.ic_notification);
-        dialog.setTitle("Take Pill: "+extra.getString("PillName"));
+        dialog.setTitle("Take "+extra.getInt("NumPills")+" pills from dispenser: "+extra.getInt("DispenserNumber"));
         //dialog.setTitle("Take Pill:");
-        dialog.setMessage("Did you take the pill?");
+        dialog.setMessage("Did you take the pill(s)?");
         dialog.show();
     }
     public void SelectLED(int num){
